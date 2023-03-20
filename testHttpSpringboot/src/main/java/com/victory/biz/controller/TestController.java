@@ -1,6 +1,5 @@
 package com.victory.biz.controller;
 
-import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,16 +21,16 @@ public class TestController {
 	@PostMapping(value = "/PostTest")
 	public ResultVo PostTest(@RequestBody TestVo param) throws Exception {
 
-		log.debug("param : " +  param);
+		log.info("param : " +  param);
 
 		return ResultVo.builder().result("PostTest").resultMsg("PostTest 성공").build();
 
 	}
 
 	@GetMapping(value = "/GetTest")
-	public ResultVo GetTest(@RequestParam TestVo param) throws Exception {
+	public ResultVo GetTest(@RequestParam Map<String, Object> param) throws Exception {
 
-		log.debug("param : " +  param);
+		log.info("param : " +  param);
 
 
 		return ResultVo.builder().result("GetTest").resultMsg("GetTest 성공").build();
