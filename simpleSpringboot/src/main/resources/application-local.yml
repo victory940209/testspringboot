@@ -1,16 +1,13 @@
-#dev
 server:
-  port: 9000
+  port: 9010
 
 ---
 #pid file save path
 spring:
   application:
-    name: springboot01
+    name: simpleSpringboot
   pid:
-    file: /data1/scraping/springboot01.pid
-  zipkin:
-    base-url: http://127.0.0.1:9411
+    file: /data1/scraping/simpleSpringboot.pid
 ---
 logging:
   config: classpath:logback-local.xml
