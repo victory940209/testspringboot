@@ -8,8 +8,6 @@ spring:
     name: simpleSpringboot
   pid:
     file: /data1/scraping/simpleSpringboot.pid
----
-logging:
-  config: classpath:logback-local.xml
+
 
 

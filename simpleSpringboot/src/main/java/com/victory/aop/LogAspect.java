@@ -29,23 +29,8 @@ public class LogAspect {
 	@Around("execution(* com.victory..*Controller.*(..))")
 	public Object LogBefore(ProceedingJoinPoint joinpoint)throws Throwable{
 
-		HttpServletRequest request = ((ServletRequestAttributes)RequestContextHolder.currentRequestAttributes()).getRequest();
-		HttpSession session = request.getSession();
 		Object proceed = joinpoint.proceed();
-		Enumeration eheader = request.getHeaderNames();
-//		while(eheader.hasMoreElements()) {
-//			String nm = (String) eheader.nextElement();
-//			log.info("==== headernm : " + nm + "  value : " + request.getHeader(nm));
-//		}
-//		log.info("==== TraceId : " + request.getHeader("X-B3-TraceId"));
-//		log.info("==== IP Address : {}", request.getRemoteAddr());
-//		log.info("==== host : {}", request.getHeader("host"));
-//		log.info("==== connection {}: ", request.getHeader("connection"));
-//		log.info("==== referer : {}", request.getHeader("referer"));
-//		log.info("==== cookie: : {}", request.getHeader("cookie"));
-//		log.info("==== sessionId : {}", session.getId());
-//        log.info("==== reqParam : {}", joinpoint.getArgs()[0]);
-//        log.debug("==== resParam : {}", proceed);
+
 
         Map<String, Object> resMap = new HashMap<String, Object>();
 

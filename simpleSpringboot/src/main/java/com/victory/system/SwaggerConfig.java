@@ -1,4 +1,4 @@
-package com.victory;
+package com.victory.system;
 
 import org.springdoc.core.GroupedOpenApi;
 import org.springframework.context.annotation.Bean;
