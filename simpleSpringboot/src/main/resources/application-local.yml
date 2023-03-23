@@ -7,7 +7,7 @@ spring:
   application:
     name: simpleSpringboot
   pid:
-    file: /data1/scraping/simpleSpringboot.pid
+    file: /data1/pid/simpleSpringboot.pid
 
 
 
