@@ -14,8 +14,8 @@ public class SwaggerConfig {
 	OpenAPI openAPI() {
 	   Info info = new Info()
 	           .version("v1.0.0")
-	           .title("test API")
-	           .description("test swagger");
+	           .title("test12345 API")
+	           .description("test1235 swagger");
 
 	   return new OpenAPI()
 	   		.info(info);
@@ -24,7 +24,7 @@ public class SwaggerConfig {
 	@Bean
 	GroupedOpenApi authApi() {
 	 return GroupedOpenApi.builder()
-			 .group("Auth API v1.0.0")
+			 .group("API v1.0.0")
 			 .packagesToScan("com.victory")
 			 .build();
 	}
