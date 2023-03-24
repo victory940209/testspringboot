@@ -1,0 +1,61 @@
+<project name="testJavaWeb" default="compile" basedir=".">
+	<description>test Java Web</description>
+
+	<property name="build.home"    	value="/data1/javaWeb"/>
+	<property name="src.home"      	value="${basedir}/main/java"/>
+	<property name="resources.home"   value="${basedir}/main/resources"/>
+	<property name="web.home"     	value="${basedir}/main/web"/>
+	<property name="webapp.home"     	value="${basedir}/main/webapp"/>
+	<property name="weblib.home"     	value="${basedir}/main/webapp/WEB-INF/lib"/>
+
+	<path id="compile.classpath">
+		<fileset dir="${weblib.home}">
+			<include name="**/*.jar"/>
+		</fileset>
+	</path>
+
+
+	<target name="clean" description="Delete old build and dist directories">
+		<delete dir="${build.home}/"/>
+	</target>
+
+
+	<target name="prepare" depends="clean">
+
+		<mkdir dir="${build.home}"/>
+		<mkdir  dir="${build.home}/WEB-INF"/>
+		<mkdir  dir="${build.home}/WEB-INF/classes"/>
+		<mkdir  dir="${build.home}/WEB-INF/lib"/>
+
+
+		<copy todir="${build.home}">
+			<fileset dir="${web.home}"/>
+		</copy>
+
+		<copy todir="${build.home}">
+			<fileset dir="${webapp.home}"/>
+		</copy>
+
+		<copy todir="${build.home}/WEB-INF/lib">
+			<fileset dir="${weblib.home}">
+				<include name="**/*.*"/>
+			</fileset>
+		</copy>
+
+		<copy todir="${build.home}/WEB-INF/classes">
+			<fileset dir="${resources.home}">
+				<include name="**/*.*"/>
+			</fileset>
+		</copy>
+	</target>
+
+	<target name="compile" depends="prepare" description="Compile Java sources">
+
+		<javac destdir="${build.home}/WEB-INF/classes" debug="yes" encoding="EUC-KR" source="1.8" target="1.8">
+			<src path ="${src.home}"/>
+			<classpath refid="compile.classpath"/>
+		</javac>
+
+	</target>
+
+</project>
