@@ -1,25 +1,26 @@
 <project name="testJavaWeb" default="compile" basedir=".">
 	<description>test Java Web</description>
 
-	<property name="build.home"    	value="/data1/javaWeb"/>
-	<property name="src.home"      	value="${basedir}/main/java"/>
-	<property name="resources.home"   value="${basedir}/main/resources"/>
-	<property name="web.home"     	value="${basedir}/main/web"/>
-	<property name="webapp.home"     	value="${basedir}/main/webapp"/>
-	<property name="weblib.home"     	value="${basedir}/main/webapp/WEB-INF/lib"/>
+	<property name="build.home"    	value="/data1/javaWeb"/> <!-- 배포할 위치 -->
+	<property name="src.home"      	value="${basedir}/src/main/java"/> <!-- 자바 파일 위치 -->
+	<property name="resources.home"   value="${basedir}/src/main/resources"/> <!-- config xml등 resources-->
+	<property name="web.home"     	value="${basedir}/src/main/web"/> <!-- 사용되는 static 파일들 -->
+	<property name="webapp.home"     	value="${basedir}/src/main/webapp"/> <!-- 사용되는 static 파일들 -->
+	<property name="weblib.home"     	value="${basedir}/src/main/webapp/WEB-INF/lib"/> <!-- library 파일들 -->
 
+	<!-- path 저장(property 설정) -->
 	<path id="compile.classpath">
 		<fileset dir="${weblib.home}">
 			<include name="**/*.jar"/>
 		</fileset>
 	</path>
 
-
+	<!-- 기존 파일 위치 삭제 -->
 	<target name="clean" description="Delete old build and dist directories">
 		<delete dir="${build.home}/"/>
 	</target>
 
-
+	<!-- target name=claen 후에 하는 행위(스태틱한 파일, 라이브러리등 복사)-->
 	<target name="prepare" depends="clean">
 
 		<mkdir dir="${build.home}"/>
@@ -49,10 +50,14 @@
 		</copy>
 	</target>
 
+	<!-- target name=prepare 후에 하는 행위 compile을 한다. -->
 	<target name="compile" depends="prepare" description="Compile Java sources">
 
+		<!-- destdir = 배포위치, source = jdk 버전  target= jdk 버전-->
 		<javac destdir="${build.home}/WEB-INF/classes" debug="yes" encoding="EUC-KR" source="1.8" target="1.8">
+			<!-- java 폴더 위치 -->
 			<src path ="${src.home}"/>
+			<!-- 해당위치에 있는 lib를 이용하여(위에서 선언한 path) compile -->
 			<classpath refid="compile.classpath"/>
 		</javac>
 
