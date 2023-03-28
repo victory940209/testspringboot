@@ -1,13 +1,13 @@
 server:
-  port: 9010
-
+  port: 9000
 ---
-#pid file save path
 spring:
   application:
     name: simpleSpringboot
   pid:
     file: /data1/pid/simpleSpringboot.pid
-
+    
+logging:
+  config: classpath:logback-local.xml
 
 

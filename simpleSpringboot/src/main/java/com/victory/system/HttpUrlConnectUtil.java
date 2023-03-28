@@ -42,8 +42,6 @@ public class HttpUrlConnectUtil {
 		HttpHeaders reqheader = setHeader(header);
 		HttpEntity<T> entity = new HttpEntity<T>(obj, reqheader);
 
-
-
 		ResponseEntity<K> respEntity = restTemplate.getForEntity(url, cls, entity);
 
 		return respEntity.getBody();
