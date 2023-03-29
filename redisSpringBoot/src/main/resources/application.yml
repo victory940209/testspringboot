@@ -1,0 +1,9 @@
+server:
+  port: 8188
+
+spring:
+  application:
+    name: redisSpringboot
+    
+logging:
+  config: classpath:logback-spring.xml
